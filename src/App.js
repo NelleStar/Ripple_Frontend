@@ -1,25 +1,79 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import userContext from "./userContext";
+import NavBar from "./NavBar/NavBar";
+import Home from "./Components/Home/Home";
+import UsersList from "./Components/Users/UsersList";
+
+import LoginForm from "./Forms/LoginForm/LoginForm";
+import SignUpForm from "./Forms/SignUpForm/SignUpForm";
+
+import RippleApi from "./apiRipple";
+
+import "./App.css";
+
+// ======================================================================== //
 
 function App() {
+  // set state
+  const [user, setUser] = useState({});
+
+  // store data for user in state
+  const getUser = async (username) => {
+    const res = await RippleApi.getUser(username);
+    console.log(`App getUser results:`, res);
+    setUser({ ...res.user, token: RippleApi.token });
+  };
+
+  // collect username and token
+  useEffect(() => {
+    let username = localStorage.getItem("username");
+    let token = localStorage.getItem("token");
+    console.log(`App useEffect Username and Token:`, username, token);
+
+    // if both are there update them
+    if (username && token) {
+      RippleApi.token = token;
+      getUser(username);
+    } else {
+      RippleApi.token = "";
+    }
+  }, []);
+
+  //update local storage, token and state
+  const logIn = (data) => {
+    localStorage.setItem("username", data.username);
+    localStorage.setItem("token", data.token);
+    RippleApi.token = data.token;
+    getUser(data.username);
+    console.log(`app.js logIn`)
+  };
+
+  // log user out
+  const logOut = (data) => {
+    localStorage.clear();
+    RippleApi.token = "";
+    setUser({});
+    console.log(`app.js logOut`)
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <userContext.Provider value={user}>
+        <BrowserRouter>
+          <NavBar logOut={logOut} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginForm logIn={logIn} />} />
+            <Route path="/signup" element={<SignUpForm logIn={logIn} />} />
+            {/* <Route path="/users" element={<UserForm getUser={getUser} />} /> */}
+          </Routes>
+        </BrowserRouter>
+      </userContext.Provider>
     </div>
   );
+
 }
 
 export default App;
