@@ -20,7 +20,7 @@ function LoginForm({ logIn }) {
     console.log(`LoginForm login results:`, res);
     if (res && res.token) {
       logIn({ username: formData.username, token: res.token });
-      navigate(`/user/${formData.username}`);
+      navigate(`/users/${formData.username}`);
     } else {
       alert(`Invalid username/password`);
     }

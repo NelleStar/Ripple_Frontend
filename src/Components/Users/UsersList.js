@@ -1,24 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import UserCard from "./UserCard";
 
 import RippleApi from "../../apiRipple";
+import './UserCard.css'
+import userContext from "../../userContext";
 
 function UsersList() {
     const [ users, setUsers ] = useState(null);
+    const currentUser = useContext(userContext)
 
     useEffect(() => {
         async function fetchUsers() {
             try {
                 const usersData = await RippleApi.getUsers();
                 console.log(`userData from UsersList:`, usersData);
-                setUsers(usersData.users);
+
+                const filteredUsers = usersData.users.filter(
+                    (user) => user.username !== currentUser.username
+                )
+                setUsers(filteredUsers);
             } catch(err) {
                 console.error(`Error fetching users:`, err);
                 return err;
             }
         }
         fetchUsers();
-    }, []);
+    }, [currentUser]);
 
     return (
         <div className="users-list-container">

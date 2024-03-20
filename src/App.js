@@ -5,9 +5,12 @@ import userContext from "./userContext";
 import NavBar from "./NavBar/NavBar";
 import Home from "./Components/Home/Home";
 import UsersList from "./Components/Users/UsersList";
+import UserDetails from "./Components/Users/UserDetails";
+import WavesList from "./Components/Waves/WavesList";
 
 import LoginForm from "./Forms/LoginForm/LoginForm";
 import SignUpForm from "./Forms/SignUpForm/SignUpForm";
+import UserForm from "./Forms/UserForm/UserForm";
 
 import RippleApi from "./apiRipple";
 
@@ -67,7 +70,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginForm logIn={logIn} />} />
             <Route path="/signup" element={<SignUpForm logIn={logIn} />} />
-            {/* <Route path="/users" element={<UserForm getUser={getUser} />} /> */}
+            <Route path="/users" element={<UsersList />} />
+            <Route path="/users/:username" element={<UserDetails />} />
+            <Route path="/users/:username/edit" element={<UserForm getUser={getUser} />} />
+            <Route path="/waves" element={<WavesList />}/>
           </Routes>
         </BrowserRouter>
       </userContext.Provider>

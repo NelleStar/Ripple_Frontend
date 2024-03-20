@@ -8,8 +8,17 @@ function UserCard({ user }) {
     <Card className="user-card">
       <CardBody>
         <CardTitle tag="h5" className="user-name">
-          <NavLink to={`./${user.username}`}>{user.firstName} {user.lastName}</NavLink>
+          <NavLink to={`./${user.username}`}>
+            {user.firstName} {user.lastName}
+          </NavLink>
         </CardTitle>
+        {user.profilePic && (
+          <img
+            src={user.profilePic}
+            alt="Profile"
+            className="user-profile-pic"
+          />
+        )}
         <CardSubtitle tag="h6" className="user-description">
           {`@ ${user.username}`}
         </CardSubtitle>

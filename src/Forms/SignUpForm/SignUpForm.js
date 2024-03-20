@@ -1,9 +1,8 @@
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import RippleApi from "../../apiRipple";
-// import userContext from "../../userContext";
 
 // import "./SignUpForm.css";
 
