@@ -106,6 +106,17 @@ class RippleApi {
     }
   }
 
+  // create a new wave
+  static async postWave(data) {
+    try {
+      let res = await this.request(`waves/`, { ...data }, "post");
+      console.log(`API createWave results:`, res);
+      return res;
+    } catch (err) {
+      return err;
+    }
+  }
+
   // patch wave based on id and data
   static async patchWave(id, data) {
     try {
@@ -139,6 +150,7 @@ class RippleApi {
     }
   }
 
+  //get a comment
   static async getComment(waveId, commentId) {
     try {
       let res = await this.request(`waves/${waveId}/comments/${commentId}`);
@@ -149,6 +161,20 @@ class RippleApi {
     }
   }
 
+  //post a new comment
+  static async postComment(waveId, data) {
+    try {
+      let res = await this.request(
+        `waves/${waveId}/comments`, { ...data }, "post"
+      );
+      console.log(`API createComment results:`, res);
+      return res;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  //patch a comment
   static async patchComment(waveId, commentId, data) {
     try {
       let res = await this.request(
@@ -163,6 +189,7 @@ class RippleApi {
     }
   }
 
+  //delete a comment
   static async deleteComment(waveId, commentId) {
     try {
       let res = await this.request(

@@ -15,6 +15,8 @@ import UserForm from "./Forms/UserForm/UserForm";
 import RippleApi from "./apiRipple";
 
 import "./App.css";
+import NewCommentForm from "./Forms/CommentForms/NewCommentForm";
+import WaveCard from "./Components/Waves/WaveCard";
 
 // ======================================================================== //
 

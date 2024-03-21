@@ -20,7 +20,7 @@ function SignUpForm({ logIn }) {
       logIn({ username: formData.username, token: res.token });
       navigate("/");
     } else {
-      alert(`throw an error here`);
+      alert(`SignUpForm.register() error`);
     }
   };
 
