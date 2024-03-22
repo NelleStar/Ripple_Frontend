@@ -11,6 +11,8 @@ function Home() {
       <div className="home-content">
         <h1>Ripple</h1>
         <p>Where the smallest drop can make a wave!</p>
+
+        <p></p>
         {token ? (
           <p>Welcome Back, {username}!</p>
         ) : (

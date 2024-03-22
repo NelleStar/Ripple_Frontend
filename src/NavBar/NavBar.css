@@ -1,0 +1,91 @@
+.custom-navbar {
+  background-image: url('/home/nellestar/SpringBoard/53_Capstone_2/Frontend/ripple/src/Assets/image/Invert_tool_bar_backdrop.png');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  /* border: 1px solid black;  */
+  position: relative;
+}
+
+.NavbarBrand {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%; 
+  /* border: 1px solid black;  */
+}
+
+.links-container-right,
+.links-container-left {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  /* border: 1px solid black;  */
+  margin: 10px;
+}
+
+.links-container-right {
+  margin-left: auto;
+}
+
+.links-container-left {
+  margin-right: auto;
+}
+
+.nav-item-wrapper-about,
+.nav-item-wrapper-waves,
+.nav-item-wrapper-users,
+.nav-item-wrapper-logout, 
+.nav-item-wrapper-login, 
+.nav-item-wrapper-signup {
+  /* border: 1px solid black;  */
+  margin: 3px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid black;  */
+}
+
+.logo-wrapper {
+  max-width: 50%; 
+  /* border: 1px solid black;  */
+  padding: 5px; 
+}
+
+.logo-image {
+  max-width: 100%; 
+  min-width: 100px;
+  /* border: 1px solid black;  */
+}
+
+.profile-image,
+.users-image {
+  width: 50px;
+  height: 50px;
+}
+
+.users-image {
+  margin-right: 15px;
+}
+
+.waves-image {
+  width: 75px;
+  height: 50px;
+  margin-left: 15px;
+}
+
+.logout-link > a,
+.login-link > a,
+.signup-link > a {
+  color: #D8E3E0;
+  text-decoration: none;
+}
+
+.logout-link > a:hover,
+.login-link > a:hover,
+.signup-link > a:hover {
+  color: #37A1A5;
+}

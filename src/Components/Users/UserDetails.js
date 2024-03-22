@@ -5,6 +5,7 @@ import RippleApi from "../../apiRipple";
 import userContext from "../../userContext";
 import UserCard from "./UserCard";
 import WaveCard from "../Waves/WaveCard";
+import NewWaveForm from "../../Forms/WaveForm/NewWaveForm";
 
 function UserDetails() {
   const { username } = useParams();
@@ -23,6 +24,23 @@ function UserDetails() {
     };
     fetchUserData();
   }, [username]);
+
+    const handleDeleteComment = async (waveId, commentId) => {
+      console.log(`UserDetails handleDeleteComment commentId and waveId:`, commentId, waveId);
+      try {
+        console.log(`Entering handleDeleteComment in UserDetails.js`, commentId)
+        const res = await RippleApi.request(`users/${username}`);
+        
+        if (res && res.user) {
+          console.log(`UserDetails handleDeleteComment res:`, res);
+          setUserData(res.user);
+        } else {
+          console.error(`UserDetails error: invalid response received`)
+        }
+      } catch (err) {
+        console.error(`Error deleting comment:`, err);
+      }
+    };
 
     const handleDeleteWave = async (waveId) => {
       console.log(`handleDeleteWave:`, waveId);
@@ -59,16 +77,27 @@ function UserDetails() {
 
             <div className="WaveList">
               <h2>Waves</h2>
+              <div className="waves-list-new-form">
+                <NewWaveForm />
+              </div>
               {userData && userData.waves ? (
                 userData.waves.map((wave) => (
                   <div key={wave.wave_id}>
-                    <WaveCard wave={wave} />
+                    <WaveCard
+                      key={wave.wave_id}
+                      wave={wave}
+                      handleDeleteComment={(commentId) =>
+                        handleDeleteComment(wave.wave_id, commentId)
+                      }
+                    />
+
                     {isOwnProfile && (
                       <div>
                         <button onClick={() => handleDeleteWave(wave.wave_id)}>
                           Delete
                         </button>
-                        <button onClick={() => console.log("Navigate to edit form")}
+                        <button
+                          onClick={() => console.log("Navigate to edit form")}
                         >
                           Edit
                         </button>

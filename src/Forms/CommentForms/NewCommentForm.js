@@ -4,17 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 import RippleApi from "../../apiRipple";
 
-function NewCommentForm({ waveId }) {
+function NewCommentForm({ waveId, onCommentAdded }) {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
 
   const newComment = async () => {
     try {
         let res = await RippleApi.postComment(waveId, formData);
-        console.log(`NewCommentForm newComment res:`, res);
+        
         
         if (res) {
-            navigate(`/waves/${waveId}`);
+            console.log(`NewCommentForm newComment res:`, res); 
+            onCommentAdded(res);
+            setFormData({})
         } else {
             alert(`NewCommentForm.newComment(): failed to make new comment`);
         }
