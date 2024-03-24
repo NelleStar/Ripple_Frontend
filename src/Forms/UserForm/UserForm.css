@@ -1,0 +1,36 @@
+.UserForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+/* style for the whole container */
+.user-form-container{
+  border: 3px solid #022D58;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #A6E1E7;
+  text-align: left;
+  font-weight: 500;
+}
+
+.user-form-title {
+    text-align: center;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+.submit-button-wrapper {
+    text-align: center;
+}
+
+/* style for submit button */
+.submit-button {
+    background-color: #066D98;
+    color: #022D58;
+}

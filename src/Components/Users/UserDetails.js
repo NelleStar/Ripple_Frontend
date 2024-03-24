@@ -7,6 +7,8 @@ import UserCard from "./UserCard";
 import WaveCard from "../Waves/WaveCard";
 import NewWaveForm from "../../Forms/WaveForm/NewWaveForm";
 
+import "./UserDetails.css";
+
 function UserDetails() {
   const { username } = useParams();
   const [userData, setUserData] = useState(null);
@@ -61,9 +63,12 @@ function UserDetails() {
     <div className="user-details-container">
       <div className="user-details-content">
         <div className="UserProfile">
-          <div className="UserInfo">
+          <div className="columns-container">
             <div className="UserDetails">
-              <h1>{userData?.username}</h1> <br />
+              <h1 className="UserDetails-title">
+                Welcome back, {userData?.username}
+              </h1>{" "}
+              <br />
               <img
                 className="user-profile-pic"
                 src={userData?.profilePic}
@@ -76,38 +81,42 @@ function UserDetails() {
             </div>
 
             <div className="WaveList">
-              <h2>Waves</h2>
+              <h2 className="WaveList-title">Waves</h2>
               <div className="waves-list-new-form">
                 <NewWaveForm />
               </div>
-              {userData && userData.waves ? (
-                userData.waves.map((wave) => (
-                  <div key={wave.wave_id}>
-                    <WaveCard
-                      key={wave.wave_id}
-                      wave={wave}
-                      handleDeleteComment={(commentId) =>
-                        handleDeleteComment(wave.wave_id, commentId)
-                      }
-                    />
+              <div className="waves-list">
+                {userData && userData.waves ? (
+                  userData.waves.map((wave) => (
+                    <div key={wave.wave_id}>
+                      <WaveCard
+                        key={wave.wave_id}
+                        wave={wave}
+                        handleDeleteComment={(commentId) =>
+                          handleDeleteComment(wave.wave_id, commentId)
+                        }
+                      />
 
-                    {isOwnProfile && (
-                      <div>
-                        <button onClick={() => handleDeleteWave(wave.wave_id)}>
-                          Delete
-                        </button>
-                        <button
-                          onClick={() => console.log("Navigate to edit form")}
-                        >
-                          Edit
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                ))
-              ) : (
-                <p>No waves found</p>
-              )}
+                      {isOwnProfile && (
+                        <div>
+                          <button
+                            onClick={() => handleDeleteWave(wave.wave_id)}
+                          >
+                            Delete
+                          </button>
+                          <button
+                            onClick={() => console.log("Navigate to edit form")}
+                          >
+                            Edit
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <p>No waves found</p>
+                )}
+              </div>
             </div>
           </div>
         </div>

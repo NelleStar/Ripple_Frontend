@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import RippleApi from "../../apiRipple";
 import userContext from "../../userContext";
 
+import "./NewWaveForm.css"
+
 function NewWaveForm() {
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
@@ -21,7 +23,8 @@ function NewWaveForm() {
             console.log(`NewWaveForm newWave res:`, res);
 
             if (res) {
-                navigate(`/users/${username}`);
+                console.log(`Wave created successfully`);
+                setFormData({});
             } else {
                 alert(`Failed to create new wave`);
             }
@@ -50,7 +53,7 @@ function NewWaveForm() {
     return (
       <div className="new-wave-form-container">
         <div className="new-wave-form-content">
-          <h3>New Wave</h3>
+          <h3 className="form-title">New Wave</h3>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Label for="waveString">Add your drop: </Label>
@@ -62,7 +65,7 @@ function NewWaveForm() {
                 onChange={handleChange}
               />
             </FormGroup>
-            <Button>Submit</Button>
+            <Button className="submit-button">Submit</Button>
           </Form>
         </div>
       </div>

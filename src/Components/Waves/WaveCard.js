@@ -5,6 +5,8 @@ import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap";
 import NewCommentForm from "../../Forms/CommentForms/NewCommentForm";
 import RippleApi from "../../apiRipple";
 
+import "./WaveCard.css";
+
 function WaveCard({ wave, handleDeleteComment }) {
   // console.log("WaveCard is rendering");
 
@@ -49,34 +51,51 @@ function WaveCard({ wave, handleDeleteComment }) {
 
   return (
     <Card className="wave-card">
-      <CardBody>
-        <CardTitle tag="h5" className="wave-string">
-          {waveString}
-        </CardTitle>
-        <CardSubtitle tag="h6" className="created-at">
-          {wave.username} at 
-          {new Date(createdAt).toLocaleString()}
-        </CardSubtitle>
+      <CardBody className="wave-content">
+        <div className="wave-header">
+          <CardTitle className="wave-string">
+            <span className="wave-text">{waveString}</span>
+          </CardTitle>
+          <div className="created-at">
+            <span>
+              {wave.username} at {new Date(createdAt).toLocaleString()}
+            </span>
+          </div>
+        </div>
         <div>
           <h6>Comments:</h6>
           <ul>
             {wave.comments &&
               wave.comments.map((comment, index) => (
-                <li key={index}>
-                  <strong>{comment.username}</strong> : {comment.commentString}
-                  <Button onClick={() => handleCommentDelete(waveId, comment.commentId)}>
-                    Delete Comment
-                  </Button>
-                </li>
+                <div key={index} className="comment-wrapper">
+                  <li className="comment-item">
+                    <span className="comment-username">{comment.username}</span>{" "}
+                    :{" "}
+                    <span className="comment-text">
+                      {comment.commentString}
+                    </span>
+                    <div>
+                      <Button
+                        onClick={() =>
+                          handleCommentDelete(waveId, comment.commentId)
+                        }
+                        className="delete-button"
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </li>
+                </div>
               ))}
           </ul>
         </div>
 
-        <Button onClick={toggleCommentForm}>
-          {showCommentForm ? "Hide Comment Form" : "Add Comment"}
-        </Button>
+        <div className="add-comment-button-container">
+          <Button onClick={toggleCommentForm} className="add-comment-button">
+            {showCommentForm ? "Hide Comment Form" : "Add Comment"}
+          </Button>
+        </div>
 
-        {/* Render the comment form if showCommentForm is true */}
         {showCommentForm && (
           <NewCommentForm
             waveId={wave.waveId}

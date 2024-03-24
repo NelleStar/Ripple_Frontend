@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import RippleApi from "../../apiRipple";
 import userContext from "../../userContext";
 
+import "./UserForm.css";
+
 function UserForm({ getUser }) {
     // create state for form, use the params and bring is the user context object
     const [ formData, setFormData ] = useState({});
@@ -49,69 +51,71 @@ function UserForm({ getUser }) {
     };
 
     return (
-        <div className="UserForm">
-            <div className="user-form-container">
-                <h3>Update Profile</h3>
-                <Form className="user-form-context" onSubmit={handleSubmit}>
-                    <FormGroup>
-                        <Label for="userName">Username (cannot change)</Label>
-                        <Input 
-                            id="userName" 
-                            name="userName" 
-                            type="text" 
-                            value={formData.username || ""} 
-                            readOnly 
-                        />
-                    </FormGroup>
-                    <br />
-                    <FormGroup>
-                        <Label for="firstName">First Name</Label>
-                        <Input 
-                            id="firstName" 
-                            name="firstName" 
-                            type="text" 
-                            value={formData.firstName || ""} 
-                            onChange={handleChange} 
-                        />
-                    </FormGroup>
-                    <br />
-                    <FormGroup>
-                        <Label for="lasttName">Last Name</Label>
-                        <Input 
-                            id="lastName" 
-                            name="lastName" 
-                            type="text" 
-                            value={formData.lastName || ""} 
-                            onChange={handleChange} 
-                        />
-                    </FormGroup>
-                    <br />
-                    <FormGroup>
-                        <Label for="email">Email</Label>
-                        <Input 
-                            id="email" 
-                            name="email" 
-                            type="email" 
-                            value={formData.email || ""} 
-                            onChange={handleChange} 
-                        />
-                    </FormGroup>
-                    <br />
-                    <FormGroup>
-                        <Label for="profilePic">Profile Picture URL</Label>
-                        <Input 
-                            id="profilePic" 
-                            name="profilePic" 
-                            type="text" 
-                            value={formData.profilePic || ""} 
-                            onChange={handleChange} 
-                        />
-                    </FormGroup>
-                    <br />
-                    <Button>Submit</Button>
-                </Form>
+      <div className="UserForm">
+        <div className="user-form-container">
+          <h3 className="user-form-title">Update Profile</h3>
+          <Form className="user-form" onSubmit={handleSubmit}>
+            <FormGroup className="input">
+              <Label for="username">Username (cannot change)</Label>
+              <Input
+                id="username"
+                name="username"
+                type="text"
+                value={formData.username || ""}
+                readOnly
+              />
+            </FormGroup>
+
+            <FormGroup className="input">
+              <Label for="firstName">First Name</Label>
+              <Input
+                id="firstName"
+                name="firstName"
+                type="text"
+                value={formData.firstName || ""}
+                onChange={handleChange}
+              />
+            </FormGroup>
+
+            <FormGroup className="input">
+              <Label for="lasttName">Last Name</Label>
+              <Input
+                id="lastName"
+                name="lastName"
+                type="text"
+                value={formData.lastName || ""}
+                onChange={handleChange}
+              />
+            </FormGroup>
+
+            <FormGroup className="input">
+              <Label for="email">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email || ""}
+                onChange={handleChange}
+              />
+            </FormGroup>
+
+            <FormGroup className="input">
+              <Label for="profilePic">Profile Picture URL</Label>
+              <Input
+                id="profilePic"
+                name="profilePic"
+                type="text"
+                value={formData.profilePic || ""}
+                onChange={handleChange}
+              />
+            </FormGroup>
+
+            <div className="submit-button-wrapper">
+              <Button className="submit-button">Submit</Button>
             </div>
+          </Form>
         </div>
+      </div>
     );
 }
 

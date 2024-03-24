@@ -1,0 +1,24 @@
+.home-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  background-color: #D8E3E0;
+}
+
+.content-wrapper {
+  text-align: center; 
+}
+
+.home-content {
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+  padding: 20px;
+}
+
+.home-content p {
+  margin-bottom: 10px; 
+}

@@ -1,0 +1,16 @@
+/* style for the whole container */
+.new-wave-form-container{
+  border: 3px solid #022D58;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #A6E1E7;
+  text-align: center;
+}
+
+/* style for comment delete button */
+.submit-button {
+    background-color: #066D98;
+    color: #022D58;
+}
+

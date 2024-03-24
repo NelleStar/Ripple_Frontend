@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import RippleApi from "../../apiRipple";
 
-//import "./LoginForm.css";
+import "./LoginForm.css";
 
 // LoginForm for returning user being passed logIn prop from App.js
 function LoginForm({ logIn }) {
@@ -42,9 +42,9 @@ function LoginForm({ logIn }) {
   return (
     <div className="login-form-container">
       <div className="login-form-content">
-        <h3>Login</h3>
+        <h3 className="login-form-title">Login</h3>
         <Form onSubmit={handleSubmit}>
-          <FormGroup>
+          <FormGroup className="input">
             <Label for="userName">Username</Label>
             <Input
               id="userName"
@@ -54,7 +54,7 @@ function LoginForm({ logIn }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="input">
             <Label for="password">Password</Label>
             <Input
               id="password"
@@ -64,7 +64,9 @@ function LoginForm({ logIn }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <Button>Submit</Button>
+          <div className="submit-button-wrapper">
+            <Button className="submit-button">Submit</Button>
+          </div>
         </Form>
       </div>
     </div>

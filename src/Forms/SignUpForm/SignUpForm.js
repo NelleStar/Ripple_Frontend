@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import RippleApi from "../../apiRipple";
 
-// import "./SignUpForm.css";
+import "./SignUpForm.css";
 
 function SignUpForm({ logIn }) {
   // create state for form, navigations, and bring in user context obj
@@ -39,9 +39,9 @@ function SignUpForm({ logIn }) {
   return (
     <div className="signup-form-container">
       <div className="signup-form-content">
-        <h3>Sign Up</h3>
+        <h3 className="signup-form-title">Sign Up</h3>
         <Form onSubmit={handleSubmit}>
-          <FormGroup>
+          <FormGroup className="input">
             <Label for="userName">Username</Label>
             <Input
               id="userName"
@@ -51,7 +51,7 @@ function SignUpForm({ logIn }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="input">
             <Label for="password">Password</Label>
             <Input
               id="password"
@@ -61,7 +61,7 @@ function SignUpForm({ logIn }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="input">
             <Label for="firstName">First Name</Label>
             <Input
               id="firstName"
@@ -71,7 +71,7 @@ function SignUpForm({ logIn }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="input">
             <Label for="lastName">Last Name</Label>
             <Input
               id="lastName"
@@ -81,7 +81,7 @@ function SignUpForm({ logIn }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="input">
             <Label for="email">Email</Label>
             <Input
               id="email"
@@ -91,7 +91,7 @@ function SignUpForm({ logIn }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup className="input">
             <Label for="profilePic">Profile Picture URL</Label>
             <Input
               id="profilePic"
@@ -101,7 +101,10 @@ function SignUpForm({ logIn }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <Button>Submit</Button>
+          
+          <div className="submit-button-wrapper">
+            <Button className="submit-button">Submit</Button>
+          </div>
         </Form>
       </div>
     </div>

@@ -6,6 +6,8 @@ import NewWaveForm from "../../Forms/WaveForm/NewWaveForm";
 
 import RippleApi from "../../apiRipple";
 
+import "./WaveList.css"
+
 function WavesList() {
     const [ waves, setWaves ] = useState(null);
     // const { user } = useContext(userContext);
@@ -40,7 +42,7 @@ function WavesList() {
       <div className="waves-list-container">
         <div className="waves-list-content">
           <div className="waves-list-title">
-            <h3>Waves</h3>
+            <h1>Waves</h1>
           </div>
           <div className="waves-list-new-form">
             <NewWaveForm />
@@ -50,12 +52,12 @@ function WavesList() {
               waves.map((wave) => (
                 <div className="WaveCard" key={wave.waveId}>
                   <WaveCard wave={wave} />
-                  <button onClick={() => handleDeleteWave(wave.waveId)}>
+                  {/* <button onClick={() => handleDeleteWave(wave.waveId)}>
                     Delete
                   </button>
                   <button onClick={() => console.log("Navigate to edit form")}>
                     Edit
-                  </button>
+                  </button> */}
                 </div>
               ))}
           </div>

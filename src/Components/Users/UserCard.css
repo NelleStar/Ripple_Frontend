@@ -1,4 +1,32 @@
+/* style for the card itself */
+.user-card {
+    border: 3px solid #022D58;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #A6E1E7;
+    max-width: 250px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* style for the picture */
 .user-profile-pic {
-  width: 100px;
-  height: 100px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+/* style for the user's first/last name */
+.user-name a {
+   color: #022D58;
+   text-decoration: none; 
+}
+
+.user-name a:hover {
+    text-decoration: none;
+    color: #37A1A5;
 }

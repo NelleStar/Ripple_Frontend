@@ -1,9 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import UserCard from "./UserCard";
+import userContext from "../../userContext";
 
 import RippleApi from "../../apiRipple";
 import './UserCard.css'
-import userContext from "../../userContext";
+
+import "./UserList.css"
 
 function UsersList() {
     const [ users, setUsers ] = useState(null);
@@ -28,16 +30,23 @@ function UsersList() {
     }, [currentUser]);
 
     return (
-        <div className="users-list-container">
-            <div className="users-list-content">
-                {users && users.map((user) => (
-                    <div className="UsersCard" key={user.username}>
-                        <UserCard user={user} />
-                    </div>    
-                ))}
-            </div>
+      <div className="users-list-container">
+        <div className="users-list-content">
+          <div className="users-list-header">
+            <h1 className="users-list-title">User Pool</h1>
+            <p>Come splash around!</p>
+          </div>
+          <div className="users-list-map">
+            {users &&
+              users.map((user) => (
+                <div className="UsersCard" key={user.username}>
+                  <UserCard user={user} />
+                </div>
+              ))}
+          </div>
         </div>
-    )
+      </div>
+    );
 }
 
 export default UsersList;

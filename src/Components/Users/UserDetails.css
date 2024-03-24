@@ -1,0 +1,52 @@
+/* styling for user profile section */
+.UserDetails {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #022D58;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #A6E1E7;
+  align-items: center;
+}
+
+.UserDetails a {
+    color: #022D58;
+    text-decoration: none;
+}
+.UserDetails a:hover {
+    color: #37A1A5;
+    text-decoration: none;
+}
+
+/* style for user profile title */
+.UserDetails-title {
+    text-align: center;
+    color: #022D58;
+    font-size: 36px;
+    font-family: "Segoe Print", serif;
+}
+
+
+
+/* style for waves title */
+.WaveList-title {
+    text-align: center;
+    color: #022D58;
+    font-size: 30px;
+    font-family: "Segoe Print", serif;
+}
+
+/* columns styling */
+.columns-container {
+    display: flex;
+}
+
+.UserDetails {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.WaveList {
+    flex: 4;
+}

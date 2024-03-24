@@ -1,0 +1,84 @@
+/* container for the entire card */
+.wave-card {
+  border: 3px solid #022D58;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #A6E1E7;
+}
+
+
+/* style for top portion of wave */
+.wave-header {
+    display: flex;
+    justify-content: space-between;
+}
+/* style for the wave string */
+.wave-string {
+    margin-bottom: 10px;
+}
+
+/* style for the wave created at string */
+.created-at{
+    margin-right: 20px;
+}
+
+/* style for the wave-text */
+.wave-text {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* style for the comments section */
+ul {
+    list-style-type: none;
+    padding: none;
+}
+
+/* style for lis on the page */
+li {
+    margin-bottom: 10px;
+}
+
+/* style for each comment wrapper */
+.comment-wrapper {
+    border: 1px solid #022D58;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #37A1A5;
+}
+
+/* style for each comment item */
+.comment-item {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* style for the comment username */
+.comment-username {
+    font-weight: 500;
+}
+
+/* style for comment test */
+.comment-text {
+    flex-grow: 1;
+    margin: 10px;
+}
+
+/* style for comment delete button */
+.delete-button {
+    background-color: #066D98;
+    color: #022D58;
+}
+
+/* center the add comment button */
+.add-comment-button-container {
+    display: flex;
+    justify-content: center;
+}
+/* style for add comment button */
+.add-comment-button {
+    background-color: #066D98;
+    color: #022D58;
+}

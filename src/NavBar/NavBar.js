@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Navbar, Nav, NavItem } from "reactstrap";
-import { NavLink } from "react-router-dom"; // Import NavLink from react-router-dom
+import { NavLink } from "react-router-dom";
 import userContext from "../userContext";
 import logoImage from "/home/nellestar/SpringBoard/53_Capstone_2/Frontend/ripple/src/Assets/image/Ripple.png";
 import profileImage from "/home/nellestar/SpringBoard/53_Capstone_2/Frontend/ripple/src/Assets/image/app_icon.png";

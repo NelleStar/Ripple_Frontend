@@ -1,0 +1,21 @@
+/* style for the h1 */
+.waves-list-title {
+    text-align: center;
+    color: #022D58;
+    font-size: 24px;
+    font-family: "Segoe Print", serif;
+}
+
+/* style for waves form */
+.waves-list-new-form {
+    width: 30%;
+    min-width: 400px;
+    margin: 0 auto;
+}
+
+/* style for list of wave lis */
+.waves-list {
+    width: 60%;
+    min-width: 400px;
+    margin: 0 auto;
+}
