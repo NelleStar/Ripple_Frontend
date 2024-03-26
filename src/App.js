@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, HashRouter } from "react-router-dom";
 
 import userContext from "./userContext";
 import NavBar from "./NavBar/NavBar";
@@ -66,7 +66,7 @@ function App() {
   return (
     <div className="App">
       <userContext.Provider value={user}>
-        <BrowserRouter>
+        <HashRouter>
           <NavBar logOut={logOut} />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -81,7 +81,7 @@ function App() {
               <Route path="/waves" element={<WavesList />} />
               <Route path="*" element={<Navigate to="/"/>}/>            
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </userContext.Provider>
     </div>
   );
