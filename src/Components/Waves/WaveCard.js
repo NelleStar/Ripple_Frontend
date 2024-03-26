@@ -7,45 +7,46 @@ import RippleApi from "../../apiRipple";
 
 import "./WaveCard.css";
 
-function WaveCard({ wave, handleDeleteComment }) {
+function WaveCard({ wave, loggedInUser }) {
   // console.log("WaveCard is rendering");
 
   const navigate = useNavigate();
   const waveId = wave.waveId || wave.wave_id;
   const waveString = wave.waveString || wave.wave_string;
-  const createdAt = wave.createdAt || wave.created_at;
+  const createdAt = wave.createdAt || wave.created_at || wave.createdat;
 
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [comments, setComments] = useState(wave.comments || []);
 
   const toggleCommentForm = () => {
     setShowCommentForm((prevState) => !prevState);
-  }
+  };
 
   const handleCommentAdded = (newCommentData) => {
     console.log(`newCommentData from handleCommentAdded:`, newCommentData);
-    const { comment_string, username } = newCommentData.newComment;
-    console.log("New comment added:", comment_string, "by", username)
-    setComments((prevComments) => [...prevComments, newCommentData]);
-  }
-
-  const handleCommentDelete = async (waveId, commentId) => {
-    console.log("WaveCard.handleCommentDelete with commentID:", commentId);
-    try {
-      const res = await handleDeleteComment(waveId, commentId);
-      console.log("WaveCard handleCommentDelete res:", res);
-      setComments(res.user)
-    } catch (err) {
-      console.error("WaveCard Error handleCommentDelete:", err);
-    }
+    const { comment_string, username } = newCommentData;
+    console.log("New comment added:", comment_string, "by", username);
+    setComments([...comments, newCommentData]);
   };
 
-  const handleDelete = async () => {
-    console.log("WaveCard.handleDelete with ID:", waveId);
+  // const handleCommentDelete = async (waveId, commentId) => {
+  //   console.log("WaveCard.handleCommentDelete with commentID:", commentId);
+  //   try {
+  //     const res = await handleDeleteComment(waveId, commentId);
+  //     console.log("WaveCard handleCommentDelete res:", res);
+  //     setComments(res.user);
+  //   } catch (err) {
+  //     console.error("WaveCard Error handleCommentDelete:", err);
+  //   }
+  // };
+
+  const handleDelete = async (commentId) => {
+    console.log("WaveCard.handleDelete with ID:", commentId);
     try {
-      await RippleApi.deleteWave(waveId)
-    } catch(err) {
-      console.error(`Error handleDelete:`, err)
+      await RippleApi.deleteComment(waveId, commentId);
+      setComments(comments.filter(comment => (comment.commentId || comment.comment_id) !== commentId))
+    } catch (err) {
+      console.error(`Error handleDelete:`, err);
     }
   };
 
@@ -65,24 +66,26 @@ function WaveCard({ wave, handleDeleteComment }) {
         <div>
           <h6>Comments:</h6>
           <ul>
-            {wave.comments &&
-              wave.comments.map((comment, index) => (
+            {comments &&
+            comments.map((comment, index) => (
                 <div key={index} className="comment-wrapper">
                   <li className="comment-item">
                     <span className="comment-username">{comment.username}</span>{" "}
                     :{" "}
                     <span className="comment-text">
-                      {comment.commentString}
+                      {comment.commentString || comment.comment_string}
                     </span>
                     <div>
-                      <Button
-                        onClick={() =>
-                          handleCommentDelete(waveId, comment.commentId)
-                        }
-                        className="delete-button"
-                      >
-                        Delete
-                      </Button>
+                      {comment.username === loggedInUser && (
+                        <Button
+                          onClick={() =>
+                            handleDelete(comment.commentId || comment.comment_id)
+                          }
+                          className="delete-button"
+                        >
+                          Delete
+                        </Button>
+                      )}
                     </div>
                   </li>
                 </div>

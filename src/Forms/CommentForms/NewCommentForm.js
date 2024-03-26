@@ -15,7 +15,7 @@ function NewCommentForm({ waveId, onCommentAdded }) {
         
         if (res) {
             console.log(`NewCommentForm newComment res:`, res); 
-            onCommentAdded(res);
+            onCommentAdded(res.newComment);
             setFormData({})
         } else {
             alert(`NewCommentForm.newComment(): failed to make new comment`);

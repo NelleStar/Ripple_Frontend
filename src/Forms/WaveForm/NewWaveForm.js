@@ -7,7 +7,7 @@ import userContext from "../../userContext";
 
 import "./NewWaveForm.css"
 
-function NewWaveForm() {
+function NewWaveForm( {addWave} ) {
     const [formData, setFormData] = useState({});
     const navigate = useNavigate();
     const { username, token } = useContext(userContext);
@@ -20,10 +20,11 @@ function NewWaveForm() {
             }
 
             let res = await RippleApi.postWave(formData);
-            console.log(`NewWaveForm newWave res:`, res);
+            console.log(`NewWaveForm newWave res:`, res.wave);
 
             if (res) {
                 console.log(`Wave created successfully`);
+                addWave(res.wave)
                 setFormData({});
             } else {
                 alert(`Failed to create new wave`);
@@ -33,6 +34,7 @@ function NewWaveForm() {
             alert(`Failed to create new wave`);
         }
     };
+
 
 
     // on change, update the inputs accordingly by targeting the name and values, collecting the rest of the known data and updating to new values

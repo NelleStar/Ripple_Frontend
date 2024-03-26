@@ -10,7 +10,7 @@ import "./WaveList.css"
 
 function WavesList() {
     const [ waves, setWaves ] = useState(null);
-    // const { user } = useContext(userContext);
+    const { username } = useContext(userContext);
     
     useEffect(() => {
         async function fetchWaves() {
@@ -38,6 +38,10 @@ function WavesList() {
       }
     }
 
+    const addWave = (wave) => {
+      setWaves([...waves, wave]);
+    }
+
     return (
       <div className="waves-list-container">
         <div className="waves-list-content">
@@ -45,13 +49,13 @@ function WavesList() {
             <h1>Waves</h1>
           </div>
           <div className="waves-list-new-form">
-            <NewWaveForm />
+            <NewWaveForm addWave={addWave}/>
           </div>
           <div className="waves-list">
             {waves &&
               waves.map((wave) => (
                 <div className="WaveCard" key={wave.waveId}>
-                  <WaveCard wave={wave} />
+                  <WaveCard wave={wave} loggedInUser={username}/>
                   {/* <button onClick={() => handleDeleteWave(wave.waveId)}>
                     Delete
                   </button>

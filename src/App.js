@@ -69,8 +69,8 @@ function App() {
         <BrowserRouter>
           <NavBar logOut={logOut} />
           <Routes>
-            <Route path="/" element={<Home />}>
-              <Route path="/login" element={<LoginForm logIn={logIn} />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginForm logIn={logIn} />} />
               <Route path="/signup" element={<SignUpForm logIn={logIn} />} />
               <Route path="/users" element={<UsersList />} />
               <Route path="/users/:username" element={<UserDetails />} />
@@ -79,8 +79,7 @@ function App() {
                 element={<UserForm getUser={getUser} />}
               />
               <Route path="/waves" element={<WavesList />} />
-              <Route path="*" element={<Navigate to="/"/>}/>
-            </Route>
+              <Route path="*" element={<Navigate to="/"/>}/>            
           </Routes>
         </BrowserRouter>
       </userContext.Provider>
