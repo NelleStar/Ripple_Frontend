@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import userContext from "../../userContext";
+import { NavLink } from "react-router-dom";
 import "./Home.css"
 
 // Home - welcome back or login/signup depending on user status
@@ -17,15 +18,32 @@ function Home() {
             <p>Welcome Back, {username}!</p>
           ) : (
             <p>
-              <a href="/login">Log In</a>
-              <a href="/signup">Sign Up</a>
+              <div className="home-login-link">
+                <NavLink to={`/login`}>
+                  <div>login</div>
+                </NavLink>
+              </div>
+              <div className="home-signup-link">
+                <NavLink to={`/signup`}>
+                  <div>signup</div>
+                </NavLink>
+              </div>
             </p>
           )}
 
           <h3>Coming Soon</h3>
-          <p>Online photo albums. Keep all your favorite memories alive in one space.</p>
-          <p>Add Music to your profile. Listen to your favorites while making waves.</p>
-          <p>Update your profile to be more personal. Add about me sections to help others learn more about you.</p>
+          <p>
+            Online photo albums. Keep all your favorite memories alive in one
+            space.
+          </p>
+          <p>
+            Add Music to your profile. Listen to your favorites while making
+            waves.
+          </p>
+          <p>
+            Update your profile to be more personal. Add about me sections to
+            help others learn more about you.
+          </p>
         </div>
       </div>
     </div>
