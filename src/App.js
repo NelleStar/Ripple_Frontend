@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, redirect } from "react-router-dom";
 
 import userContext from "./userContext";
 import NavBar from "./NavBar/NavBar";
@@ -69,19 +69,23 @@ function App() {
         <BrowserRouter>
           <NavBar logOut={logOut} />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<LoginForm logIn={logIn} />} />
-            <Route path="/signup" element={<SignUpForm logIn={logIn} />} />
-            <Route path="/users" element={<UsersList />} />
-            <Route path="/users/:username" element={<UserDetails />} />
-            <Route path="/users/:username/edit" element={<UserForm getUser={getUser} />} />
-            <Route path="/waves" element={<WavesList />}/>
+            <Route path="/" element={<Home />}>
+              <Route path="/login" element={<LoginForm logIn={logIn} />} />
+              <Route path="/signup" element={<SignUpForm logIn={logIn} />} />
+              <Route path="/users" element={<UsersList />} />
+              <Route path="/users/:username" element={<UserDetails />} />
+              <Route
+                path="/users/:username/edit"
+                element={<UserForm getUser={getUser} />}
+              />
+              <Route path="/waves" element={<WavesList />} />
+              <Route path="*" element={<Navigate to="/"/>}/>
+            </Route>
           </Routes>
         </BrowserRouter>
       </userContext.Provider>
     </div>
   );
-
 }
 
 export default App;
