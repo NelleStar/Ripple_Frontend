@@ -1,5 +1,5 @@
 .custom-navbar {
-  background-image: url('/home/nellestar/SpringBoard/53_Capstone_2/Frontend/ripple/src/Assets/image/Invert_tool_bar_backdrop.png');
+  background-image: url('../Assets/image/Invert_tool_bar_backdrop.png');
   background-size: cover; 
   background-repeat: no-repeat; 
   background-position: center; 

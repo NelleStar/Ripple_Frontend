@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Navbar, Nav, NavItem } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import userContext from "../userContext";
-import logoImage from "/home/nellestar/SpringBoard/53_Capstone_2/Frontend/ripple/src/Assets/image/Ripple.png";
-import profileImage from "/home/nellestar/SpringBoard/53_Capstone_2/Frontend/ripple/src/Assets/image/app_icon.png";
-import wavesImage from "/home/nellestar/SpringBoard/53_Capstone_2/Frontend/ripple/src/Assets/image/waves.png";
-import usersImage from "/home/nellestar/SpringBoard/53_Capstone_2/Frontend/ripple/src/Assets/image/people.png";
-import "./NavBar.css"; // Import CSS file for additional styling
+import logoImage from "../Assets/image/Ripple.png";
+import profileImage from "../Assets/image/app_icon.png";
+import wavesImage from "../Assets/image/waves.png";
+import usersImage from "../Assets/image/people.png";
+import "./NavBar.css"; 
 
 function NavBar({ logOut }) {
   const { token, username } = useContext(userContext);
