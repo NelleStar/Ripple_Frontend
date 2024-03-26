@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.REACT_APP_BASE_URL || 
+  // "http://localhost:3001";
+  'https://ripple-backend-yp7i.onrender.com'
 
 class RippleApi {
   // the token for interaction with Ripple database will be stored here.
