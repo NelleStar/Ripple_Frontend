@@ -1,3 +1,25 @@
+Ripple is a social media site that is quickly become a long term project. My goal is to have a fully functional social media site where a user can hang out without having to feel like they are interacting at all times.
+
+https://github.com/NelleStar/Ripple_Frontend
+
+Currently, users are able to log in and create waves on their profile page or the waves feed. Each wave can be commented on and updated as needed. Users can feel confident that their private information is secure thanks to bcrypt hashing of passwords.
+
+Using Node and express backends the database is set up update and delete information as the user updates their profiles and waves. Express Router and insomnia calls allowed me to find ways to grab the information I needed at any given time.
+
+create-react-app was used for the front end, allowing me to build reusable components, forms, hooks and the like. CSS was used for some light design work but most of the focus remains at this time on the backhalf of the front end and the backend server to ensure it runs smoothly.
+
+Jest tests are being built and implemented still, working my way from the backend to the front end.
+
+Currently a user can login or sign up and then peruse the site. Waves, or the user feed, can be viewsed as a community on the waves page or as individual contributions on the individuals profile page. Users can  update their information on their profile page along with updating photos.
+
+The next step in Ripple is to implement photo albums. A place where a user can keep memories and rotate the album covers to keep their profiles as unique as they are.
+
+Finally Ripple will include a music source for tracks to play while a user is on their homepage. What says "this is me" more than our favorite songs?
+
+All in all, Ripple took on a life of its own. and when I started it I didn't know how big it would get. This became much more than a capstone to me. Now I have a long term project that feels like something I can continue to improve upon.
+
+=========================================================
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
