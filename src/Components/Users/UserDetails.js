@@ -13,6 +13,7 @@ function UserDetails() {
   const { username } = useParams();
   const [userData, setUserData] = useState(null);
   const currentUser = useContext(userContext);
+  const defaultProfilePicUrl = "https://images.unsplash.com/photo-1556197908-96ed0fa30b65?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -65,13 +66,10 @@ function UserDetails() {
         <div className="UserProfile">
           <div className="columns-container">
             <div className="UserDetails">
-              <h1 className="UserDetails-title">
-                Welcome back, {userData?.username}
-              </h1>{" "}
-              <br />
+              <h1 className="UserDetails-title">{userData?.username}</h1> <br />
               <img
                 className="user-profile-pic"
-                src={userData?.profilePic}
+                src={userData?.profilePic || defaultProfilePicUrl}
                 alt="profilePic"
               />
               <br />
@@ -82,9 +80,11 @@ function UserDetails() {
 
             <div className="WaveList">
               <h2 className="WaveList-title">Waves</h2>
-              <div className="waves-list-new-form">
-                <NewWaveForm />
-              </div>
+              {isOwnProfile && ( 
+                <div className="waves-list-new-form">
+                  <NewWaveForm />
+                </div>
+              )}
               <div className="waves-list">
                 {userData && userData.waves ? (
                   userData.waves.map((wave) => (
@@ -98,17 +98,20 @@ function UserDetails() {
                       />
 
                       {isOwnProfile && (
-                        <div>
+                        <div className="delete-button-wrapper">
                           <button
-                            onClick={() => handleDeleteWave(wave.wave_id)}
+                            className="delete-button"
+                            onClick={() =>
+                              handleDeleteWave(wave.wave_id || wave.waveId)
+                            }
                           >
                             Delete
                           </button>
-                          <button
+                          {/* <button
                             onClick={() => console.log("Navigate to edit form")}
                           >
                             Edit
-                          </button>
+                          </button> */}
                         </div>
                       )}
                     </div>

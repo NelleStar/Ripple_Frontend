@@ -36,11 +36,12 @@ function NavBar({ logOut }) {
               </>
             )}
           </div>
-          <div className="logo-container">
+          <div className="logo-container"></div>
+          {token && (
             <NavLink to={`/users/${username}`} className="logo-wrapper">
               <img src={logoImage} alt="Ripple Logo" className="logo-image" />
             </NavLink>
-          </div>
+          )}
           <div className="links-container-right">
             {token && (
               <>

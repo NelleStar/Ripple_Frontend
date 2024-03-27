@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import RippleApi from "../../apiRipple";
+import "./NewCommentForm"
 
 function NewCommentForm({ waveId, onCommentAdded }) {
   const [formData, setFormData] = useState({});
@@ -53,7 +54,9 @@ function NewCommentForm({ waveId, onCommentAdded }) {
               onChange={handleChange}
             />
           </FormGroup>
-          <Button>Submit</Button>
+          <div className="submit-button-wrapper">
+            <Button className="submit-button">Submit</Button>
+          </div>
         </Form>
       </div>
     </div>

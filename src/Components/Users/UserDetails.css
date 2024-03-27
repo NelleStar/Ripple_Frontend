@@ -27,8 +27,6 @@
     font-family: "Segoe Print", serif;
 }
 
-
-
 /* style for waves title */
 .WaveList-title {
     text-align: center;
@@ -49,4 +47,17 @@
 
 .WaveList {
     flex: 4;
+}
+
+/* style for submit button wrapper */
+.delete-button-wrapper {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* style for submit button */
+.delete-button {
+  background-color: #066D98;
+  color: #022D58;
 }
