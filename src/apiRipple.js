@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || 
-  // "http://localhost:3001";
-  'https://ripple-backend-yp7i.onrender.com'
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 class RippleApi {
   // the token for interaction with Ripple database will be stored here.
@@ -17,11 +15,6 @@ class RippleApi {
     const params = method === "get" ? data : {};
 
     try {
-      console.log(`apiRipple request url:`, url);
-      console.log(`apiRipple request method:`, method);
-      console.log(`apiRipple request data:`, data);
-      console.log(`apiRipple request params:`, params);
-      console.log(`apiRipple request headers:`, headers);
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
       console.error("API Error:", err.response);
@@ -34,7 +27,6 @@ class RippleApi {
   static async loginUser(data) {
     try {
       let res = await this.request(`auth/token`, { ...data }, "post");
-      console.log(`API loginUser results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -45,7 +37,6 @@ class RippleApi {
   static async registerUser(data) {
     try {
       let res = await this.request(`auth/register`, { ...data }, "post");
-      console.log(`API registerUser results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -56,7 +47,6 @@ class RippleApi {
   static async getUsers() {
     try {
       const res = await this.request(`users/`);
-      console.log(`API getUsers results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -67,7 +57,6 @@ class RippleApi {
   static async getUser(username) {
     try {
       let res = await this.request(`users/${username}`);
-      console.log(`API getUser results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -77,9 +66,7 @@ class RippleApi {
   // patch single users profile
   static async patchUser(username, data) {
     try {
-      console.log(`apiRipple patchUser data:`, data);
       let res = await this.request(`users/${username}`, { ...data }, "patch");
-      console.log(`API patchUser results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -90,7 +77,6 @@ class RippleApi {
   static async getWaves() {
     try {
       let res = await this.request(`waves/`);
-      console.log(`API getWaves results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -101,7 +87,6 @@ class RippleApi {
   static async getWave(id) {
     try {
       let res = await this.request(`waves/${id}`);
-      console.log(`API getWave results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -112,7 +97,6 @@ class RippleApi {
   static async postWave(data) {
     try {
       let res = await this.request(`waves/`, { ...data }, "post");
-      console.log(`API createWave results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -123,7 +107,6 @@ class RippleApi {
   static async patchWave(id, data) {
     try {
       let res = await this.response(`waves/${id}`, { ...data }, "patch");
-      console.log(`API patchWave results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -134,7 +117,6 @@ class RippleApi {
   static async deleteWave(id) {
     try {
       let res = await this.request(`waves/${id}`, {}, "delete");
-      console.log(`API deleteWave results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -145,7 +127,6 @@ class RippleApi {
   static async getComments(waveId) {
     try {
       let res = await this.request(`waves/${waveId}/comments`);
-      console.log(`API getComments results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -156,7 +137,6 @@ class RippleApi {
   static async getComment(waveId, commentId) {
     try {
       let res = await this.request(`waves/${waveId}/comments/${commentId}`);
-      console.log(`API getComment results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -169,7 +149,6 @@ class RippleApi {
       let res = await this.request(
         `waves/${waveId}/comments`, { ...data }, "post"
       );
-      console.log(`API createComment results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -184,7 +163,6 @@ class RippleApi {
         { ...data },
         "patch"
       );
-      console.log(`API patchComment results:`, res);
       return res;
     } catch (err) {
       return err;
@@ -199,7 +177,6 @@ class RippleApi {
         {},
         "delete"
       );
-      console.log(`API deleteComment results:`, res);
       return res;
     } catch (err) {
       return err;

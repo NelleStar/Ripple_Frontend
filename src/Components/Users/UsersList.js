@@ -15,8 +15,6 @@ function UsersList() {
         async function fetchUsers() {
             try {
                 const usersData = await RippleApi.getUsers();
-                console.log(`userData from UsersList:`, usersData);
-
                 const filteredUsers = usersData.users.filter(
                     (user) => user.username !== currentUser.username
                 )

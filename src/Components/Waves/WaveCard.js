@@ -8,8 +8,6 @@ import RippleApi from "../../apiRipple";
 import "./WaveCard.css";
 
 function WaveCard({ wave, loggedInUser }) {
-  // console.log("WaveCard is rendering");
-
   const navigate = useNavigate();
   const waveId = wave.waveId || wave.wave_id;
   const waveString = wave.waveString || wave.wave_string;
@@ -23,25 +21,11 @@ function WaveCard({ wave, loggedInUser }) {
   };
 
   const handleCommentAdded = (newCommentData) => {
-    console.log(`newCommentData from handleCommentAdded:`, newCommentData);
     const { comment_string, username } = newCommentData;
-    console.log("New comment added:", comment_string, "by", username);
     setComments([...comments, newCommentData]);
   };
 
-  // const handleCommentDelete = async (waveId, commentId) => {
-  //   console.log("WaveCard.handleCommentDelete with commentID:", commentId);
-  //   try {
-  //     const res = await handleDeleteComment(waveId, commentId);
-  //     console.log("WaveCard handleCommentDelete res:", res);
-  //     setComments(res.user);
-  //   } catch (err) {
-  //     console.error("WaveCard Error handleCommentDelete:", err);
-  //   }
-  // };
-
   const handleDelete = async (commentId) => {
-    console.log("WaveCard.handleDelete with ID:", commentId);
     try {
       await RippleApi.deleteComment(waveId, commentId);
       setComments(comments.filter(comment => (comment.commentId || comment.comment_id) !== commentId))

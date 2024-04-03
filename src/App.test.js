@@ -1,8 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
+import { apiRipple } from './apiRipple';
+import { BrowserRouter } from 'react-router-dom';
 
-test('renders learn react link', () => {
+it ('renders without crashing', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+});
+
+it('matches Snapshot', () => {
+  const {asFragment} = render(<App />);
+  expect(asFragment).toMatchSnapshot()
+});
+
+it('renders login link', () => {
+  const {getByText} = render(<App />)
+  expect(getByText('login')).toBeInTheDocument()
 });

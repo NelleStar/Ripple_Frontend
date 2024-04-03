@@ -14,10 +14,9 @@ function LoginForm({ logIn }) {
   // allow for navigations
   const navigate = useNavigate();
 
-  // login using async to Ripple api login method - console.log results - if there is a res and it has a token -- call the prop that was passed down from App.js
+  // login using async to Ripple api login method - if there is a res and it has a token -- call the prop that was passed down from App.js
   const login = async () => {
     let res = await RippleApi.loginUser(formData);
-    console.log(`LoginForm login results:`, res);
     if (res && res.token) {
       logIn({ username: formData.username, token: res.token });
       navigate(`/users/${formData.username}`);

@@ -20,7 +20,6 @@ class DeezerApi {
     static async search() {
         try {
             let res = await this.request("search", {q: query});
-            console.log(`DeezerApi search res`, res.data);
             return res.data
         } catch (err) {
             return err;

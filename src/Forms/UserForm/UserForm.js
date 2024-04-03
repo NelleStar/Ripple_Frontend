@@ -34,7 +34,6 @@ function UserForm({ getUser }) {
         };
 
         let res = await RippleApi.patchUser(user.username, updateData);
-        console.log(`UserForm patch results`, res);
         getUser(username);
     };
 

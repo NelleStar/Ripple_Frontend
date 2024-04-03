@@ -16,7 +16,6 @@ function WavesList() {
         async function fetchWaves() {
             try {
                 const wavesData = await RippleApi.getWaves();
-                console.log(`WavesData from WavesList:`, wavesData);
                 setWaves(wavesData.waves);
             } catch(err) {
                 console.error(`Error fetching waves:`, err);
@@ -27,11 +26,9 @@ function WavesList() {
     }, []);
 
     const handleDeleteWave = async(waveId) => {
-      console.log(`handleDeleteWave:`, waveId)
       try {
         await RippleApi.deleteWave(waveId);
         const wavesData = await RippleApi.getWaves();
-        console.log(`handleDeleteWave wavesData:`, wavesData)
         setWaves(wavesData.waves)
       } catch(err) {
         console.error(`Error deleting wave:`, err)
@@ -56,12 +53,6 @@ function WavesList() {
               waves.map((wave) => (
                 <div className="WaveCard" key={wave.waveId}>
                   <WaveCard wave={wave} loggedInUser={username}/>
-                  {/* <button onClick={() => handleDeleteWave(wave.waveId)}>
-                    Delete
-                  </button>
-                  <button onClick={() => console.log("Navigate to edit form")}>
-                    Edit
-                  </button> */}
                 </div>
               ))}
           </div>

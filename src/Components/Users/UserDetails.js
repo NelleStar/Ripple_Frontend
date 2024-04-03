@@ -19,7 +19,6 @@ function UserDetails() {
     const fetchUserData = async () => {
       try {
         const res = await RippleApi.request(`users/${username}`);
-        console.log(`getUserData results:`, res);
         setUserData(res.user);
       } catch (err) {
         console.error("Error fetching user details:", err);
@@ -29,13 +28,10 @@ function UserDetails() {
   }, [username]);
 
     const handleDeleteComment = async (waveId, commentId) => {
-      console.log(`UserDetails handleDeleteComment commentId and waveId:`, commentId, waveId);
       try {
-        console.log(`Entering handleDeleteComment in UserDetails.js`, commentId)
         const res = await RippleApi.request(`users/${username}`);
         
         if (res && res.user) {
-          console.log(`UserDetails handleDeleteComment res:`, res);
           setUserData(res.user);
         } else {
           console.error(`UserDetails error: invalid response received`)
@@ -46,11 +42,9 @@ function UserDetails() {
     };
 
     const handleDeleteWave = async (waveId) => {
-      console.log(`handleDeleteWave:`, waveId);
       try {
         await RippleApi.deleteWave(waveId);
         const res = await RippleApi.request(`users/${username}`)
-        console.log(`handleDeleteWave res:`, res);
         setUserData(res.user);
       } catch (err) {
         console.error(`Error deleting wave:`, err);
@@ -107,11 +101,6 @@ function UserDetails() {
                           >
                             Delete
                           </button>
-                          {/* <button
-                            onClick={() => console.log("Navigate to edit form")}
-                          >
-                            Edit
-                          </button> */}
                         </div>
                       )}
                     </div>

@@ -15,15 +15,13 @@ function NewWaveForm( {addWave} ) {
     const newWave = async () => {
         try {
             if (!formData || !formData.waveString) {
-                console.error("Wave string is missing in formData:", formData);
-                return;
+              console.error("Wave string is missing in formData:", formData);
+              return;
             }
 
             let res = await RippleApi.postWave(formData);
-            console.log(`NewWaveForm newWave res:`, res.wave);
 
             if (res) {
-                console.log(`Wave created successfully`);
                 addWave(res.wave)
                 setFormData({});
             } else {
@@ -40,14 +38,11 @@ function NewWaveForm( {addWave} ) {
     // on change, update the inputs accordingly by targeting the name and values, collecting the rest of the known data and updating to new values
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(`NAME: ${name} VALUE:${value}`)
         setFormData((data) => ({ ...data, [name]:value }));
-        console.log("Updated formData:", { ...formData, [name]: value });
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("NewWaveForm Data:", formData);
         newWave();
         setFormData({});
     }

@@ -5,8 +5,7 @@ import "./Home.css"
 
 // Home - welcome back or login/signup depending on user status
 function Home() {
-  const { token, username } = useContext(userContext);
-  console.log("Home '/' currentuser :", username);
+  const { token, username } = useContext(userContext) || {};
 
   return (
     <div className="home-container">

@@ -27,7 +27,6 @@ function App() {
   // store data for user in state
   const getUser = async (username) => {
     const res = await RippleApi.getUser(username);
-    console.log(`App getUser results:`, res);
     setUser({ ...res.user, token: RippleApi.token });
   };
 
@@ -35,7 +34,6 @@ function App() {
   useEffect(() => {
     let username = localStorage.getItem("username");
     let token = localStorage.getItem("token");
-    console.log(`App useEffect Username and Token:`, username, token);
 
     // if both are there update them
     if (username && token) {
@@ -52,7 +50,6 @@ function App() {
     localStorage.setItem("token", data.token);
     RippleApi.token = data.token;
     getUser(data.username);
-    console.log(`app.js logIn`)
   };
 
   // log user out
@@ -60,7 +57,6 @@ function App() {
     localStorage.clear();
     RippleApi.token = "";
     setUser({});
-    console.log(`app.js logOut`)
   };
 
   return (
